@@ -4,8 +4,11 @@
 #include "polygon.h"
 #include "helper.h"
 
+#define NUM_OF_HEADERS 5
+
 void solver();
-void stage1_write(polygon_t *polygons[]);
+void stage1_write(polygon_t *polygons[], int num_of_polygons);
+void stage2_write(polygon_t *polygons[], int num_of_polygons);
 
 int main(int argc, char *argv[]) {
     solver();
@@ -23,11 +26,12 @@ void solver() {
     calculate_perimeters(polygons, num_of_polygons);
     calculate_eccentricities(polygons, num_of_polygons);
 
-    stage_writer(polygons, 1, stage1_write);
+    stage_writer(polygons, num_of_polygons, 1, stage1_write);
+    stage_writer(polygons, num_of_polygons, 2, stage2_write);
 }
 
 /* Stage 1 operations */
-void stage1_write(polygon_t *polygons[]) {
+void stage1_write(polygon_t *polygons[], int num_of_polygons) {
     int i;
     polygon_t *polygon = polygons[0];
 
@@ -42,4 +46,29 @@ void stage1_write(polygon_t *polygons[]) {
     printf("perimeter    = %.2f m\n", polygon->perimeter);
     printf("area         = %.2f m^2\n", polygon->area);
     printf("eccentricity = %.2f\n", polygon->eccentricity);
+}
+
+/* Stage 2 operations */
+void stage2_write(polygon_t *polygons[], int num_of_polygons) {
+    int i;
+    char *headers[] = {"id", "nval", "perim", "area", "eccen"};
+
+    printf("+-------+-------+-------+-------+-------+\n");
+
+    for (i = 0; i < NUM_OF_HEADERS; ++i) {
+        printf("| %5s ", headers[i]);
+    }
+    printf("|\n");
+    printf("+-------+-------+-------+-------+-------+\n");
+
+    for (i = 0; i < num_of_polygons; ++i) {
+        printf("| %5d ", polygons[i]->poly_id);
+        printf("| %5d ", polygons[i]->num_of_vertices);
+        printf("| %5.2f ", polygons[i]->perimeter);
+        printf("| %5.2f ", polygons[i]->area);
+        printf("| %5.2f ", polygons[i]->eccentricity);
+        printf("|\n");
+    }
+
+    printf("+-------+-------+-------+-------+-------+\n");
 }
