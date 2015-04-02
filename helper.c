@@ -52,3 +52,11 @@ void calculate_perimeters(polygon_t *polygons[], int num_of_polygons) {
         calculate_perimeter(polygons[i]);
     }
 }
+
+void calculate_eccentricities(polygon_t *polygons[], int num_of_polygons) {
+    int i;
+
+    for (i = 0; i < num_of_polygons; ++i) {
+        calculate_eccentricity(polygons[i]);
+    }
+}

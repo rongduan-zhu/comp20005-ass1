@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "polygon.h"
+#include "helper.h"
 
 void malloc_polygon_t(polygon_t **polygon, int num_of_vertices) {
     *polygon = (polygon_t *) malloc(sizeof(polygon_t));
@@ -59,6 +60,10 @@ void calculate_perimeter(polygon_t *polygon) {
 
         polygon->perimeter += pair_coordinate_length(current, next);
     }
+}
+
+void calculate_eccentricity(polygon_t *polygon) {
+    polygon->eccentricity = pow(polygon->perimeter, 2) / polygon->area / 4 / M_PI;
 }
 
 double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2, double y_offset) {

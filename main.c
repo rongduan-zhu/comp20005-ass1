@@ -21,6 +21,7 @@ void solver() {
 
     calculate_areas(polygons, num_of_polygons);
     calculate_perimeters(polygons, num_of_polygons);
+    calculate_eccentricities(polygons, num_of_polygons);
 
     stage_writer(polygons, 1, stage1_write);
 }
