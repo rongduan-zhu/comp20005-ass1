@@ -22,7 +22,9 @@ void free_polygon_t(polygon_t *polygon);
 void init_polygon_t(polygon_t *polygon, int num_of_vertices, int poly_id);
 void pushback_coordinate_polygon_t(polygon_t *polygon, double x, double y);
 void calculate_area(polygon_t *polygon);
+void calculate_perimeter(polygon_t *polygon);
 double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2, double y_offset);
+double pair_coordinate_length(coordinate_t *p1, coordinate_t *p2);
 coordinate_t *get_next_coordinate(polygon_t *polygon, int current_index);
 
 #endif

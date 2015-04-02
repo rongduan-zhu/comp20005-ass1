@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -47,11 +48,31 @@ void calculate_area(polygon_t *polygon) {
     }
 }
 
+void calculate_perimeter(polygon_t *polygon) {
+    int i;
+    coordinate_t *current;
+    coordinate_t *next;
+
+    for (i = 0; i < polygon->num_of_vertices; ++i) {
+        current = polygon->coordinate + i;
+        next = get_next_coordinate(polygon, i);
+
+        polygon->perimeter += pair_coordinate_length(current, next);
+    }
+}
+
 double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2, double y_offset) {
     double x_diff;
 
     x_diff = p2->x - p1->x;
     return (2 * y_offset + p1->y + p2->y) * x_diff / 2;
+}
+
+double pair_coordinate_length(coordinate_t *p1, coordinate_t *p2) {
+    double hypotenuse_square;
+
+    hypotenuse_square = pow(p2->x - p1->x, 2) + pow(p2->y - p1->y, 2);
+    return sqrt(hypotenuse_square);
 }
 
 coordinate_t *get_next_coordinate(polygon_t *polygon, int current_index) {

@@ -44,3 +44,11 @@ void calculate_areas(polygon_t *polygons[], int num_of_polygons) {
         calculate_area(polygons[i]);
     }
 }
+
+void calculate_perimeters(polygon_t *polygons[], int num_of_polygons) {
+    int i;
+
+    for (i = 0; i < num_of_polygons; ++i) {
+        calculate_perimeter(polygons[i]);
+    }
+}
