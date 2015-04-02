@@ -38,7 +38,7 @@ void stage1_write(polygon_t *polygons[]) {
             (polygon->coordinate + i)->x, (polygon->coordinate + i)->y);
     }
 
-    printf("perimeter    = %2f m\n", polygon->perimeter);
-    printf("area         = %2f m^2\n", polygon->area);
-    printf("eccentricity = %2f\n", polygon->eccentricity);
+    printf("perimeter    = %.2f m\n", polygon->perimeter);
+    printf("area         = %.2f m^2\n", polygon->area);
+    printf("eccentricity = %.2f\n", polygon->eccentricity);
 }
