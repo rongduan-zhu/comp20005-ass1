@@ -9,6 +9,7 @@
 void solver();
 void stage1_write(polygon_t *polygons[], int num_of_polygons);
 void stage2_write(polygon_t *polygons[], int num_of_polygons);
+void stage3_write(polygon_t *polygons[], int num_of_polygons);
 
 int main(int argc, char *argv[]) {
     solver();
@@ -28,6 +29,7 @@ void solver() {
 
     stage_writer(polygons, num_of_polygons, 1, stage1_write);
     stage_writer(polygons, num_of_polygons, 2, stage2_write);
+    stage_writer(polygons, num_of_polygons, 3, stage3_write);
 }
 
 /* Stage 1 operations */
@@ -39,13 +41,13 @@ void stage1_write(polygon_t *polygons[], int num_of_polygons) {
     printf("%8s%8s\n", "x_val", "y_val");
 
     for (i = 0; i < polygon->num_of_vertices; ++i) {
-        printf("%7f %7f\n",
+        printf("%7.1f %7.1f\n",
             (polygon->coordinate + i)->x, (polygon->coordinate + i)->y);
     }
 
-    printf("perimeter    = %.2f m\n", polygon->perimeter);
-    printf("area         = %.2f m^2\n", polygon->area);
-    printf("eccentricity = %.2f\n", polygon->eccentricity);
+    printf("perimeter    = %5.2f m\n", polygon->perimeter);
+    printf("area         = %5.2f m^2\n", polygon->area);
+    printf("eccentricity = %5.2f\n", polygon->eccentricity);
 }
 
 /* Stage 2 operations */
@@ -71,4 +73,19 @@ void stage2_write(polygon_t *polygons[], int num_of_polygons) {
     }
 
     printf("+-------+-------+-------+-------+-------+\n");
+}
+
+/* Stage 3 operations */
+void stage3_write(polygon_t *polygons[], int num_of_polygons) {
+    int i;
+    polygon_t *largest;
+
+    largest = find_largest(polygons, num_of_polygons);
+    printf("Largest polygon is %d\n", largest->poly_id);
+    printf("%8s%8s\n", "x_val", "y_val");
+
+    for (i = 0; i < largest->num_of_vertices; ++i) {
+        printf("%7.1f %7.1f\n",
+            (largest->coordinate + i)->x, (largest->coordinate + i)->y);
+    }
 }

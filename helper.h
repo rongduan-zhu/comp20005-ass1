@@ -12,5 +12,6 @@ void write_header(int stage_number);
 void calculate_areas(polygon_t *polygons[], int num_of_polygons);
 void calculate_perimeters(polygon_t *polygons[], int num_of_polygons);
 void calculate_eccentricities(polygon_t *polygons[], int num_of_polygons);
+polygon_t *find_largest(polygon_t *polygons[], int num_of_polygons);
 
 #endif

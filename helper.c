@@ -34,7 +34,7 @@ void stage_writer(polygon_t *polygons[], int num_of_polygons, int stage_number, 
 }
 
 void write_header(int stage_number) {
-    printf("Stage %d\n=======\n", stage_number);
+    printf("\nStage %d\n=======\n", stage_number);
 }
 
 void calculate_areas(polygon_t *polygons[], int num_of_polygons) {
@@ -59,4 +59,20 @@ void calculate_eccentricities(polygon_t *polygons[], int num_of_polygons) {
     for (i = 0; i < num_of_polygons; ++i) {
         calculate_eccentricity(polygons[i]);
     }
+}
+
+polygon_t *find_largest(polygon_t *polygons[], int num_of_polygons) {
+    int i;
+    polygon_t *largest = polygons[0];
+
+    for (i = 1; i < num_of_polygons; ++i) {
+        if (polygons[i]->area > largest->area) {
+            largest = polygons[i];
+        } else if (polygons[i]->area == largest->area
+                && polygons[i]->poly_id < largest->poly_id) {
+            largest = polygons[i];
+        }
+    }
+
+    return largest;
 }
