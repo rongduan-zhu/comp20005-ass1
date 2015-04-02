@@ -36,3 +36,11 @@ void stage_writer(polygon_t *polygons[], int stage_number, void (*writer)(polygo
 void write_header(int stage_number) {
     printf("Stage %d\n=======\n", stage_number);
 }
+
+void calculate_areas(polygon_t *polygons[], int num_of_polygons) {
+    int i;
+
+    for (i = 0; i < num_of_polygons; ++i) {
+        calculate_area(polygons[i]);
+    }
+}

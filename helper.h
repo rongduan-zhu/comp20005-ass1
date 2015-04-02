@@ -6,7 +6,8 @@
 #define MAX_POLYGONS 100
 
 int read_all_polygon(polygon_t *polygons[]);
-void stage_writer(polygon_t *polygon[], int stage_number, void (*writer)(polygon_t *[]));
+void stage_writer(polygon_t *polygons[], int stage_number, void (*writer)(polygon_t *[]));
 void write_header(int stage_number);
+void calculate_areas(polygon_t *polygons[], int num_of_polygons);
 
 #endif
