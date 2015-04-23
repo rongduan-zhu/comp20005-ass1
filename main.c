@@ -1,5 +1,21 @@
 /* Algorithms are super f**king awesomely stupidly amazingly fun */
 /* Algorithms are fun */
+/*
+    Author: Rongduan Zhu (584 169)
+    Github: https://github.com/rongduan-zhu/
+
+    The program is made up of 5 files, main.c, helper.h, helper.c, polygon.h,
+    and polygon.c.
+
+    This is a program which calculates the area, perimeter, and eccentricity of
+    given polygons. Area is calculated by off set the polygon by the smallest y
+    value if the smallest y value is smaller than 0. This brings the polygon
+    above the x axis. The area is calculated by calculating the sum of the
+    trepezoids formed between each pair of the vertices with the x axis.
+    Considering the vertices in a clockwise order, if the next vertex is to the
+    right of the current, the area is positive, otherwise it is negative.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

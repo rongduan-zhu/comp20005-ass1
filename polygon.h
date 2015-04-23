@@ -1,3 +1,7 @@
+/*
+    Author: Rongduan Zhu (584 169)
+*/
+
 #ifndef __POLYGON_H__
 #define __POLYGON_H__
 

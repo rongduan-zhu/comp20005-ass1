@@ -1,3 +1,7 @@
+/*
+    Author: Rongduan Zhu (584 169)
+*/
+
 #include <stdio.h>
 #include <assert.h>
 
