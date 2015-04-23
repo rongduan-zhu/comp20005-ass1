@@ -9,7 +9,8 @@
 void malloc_polygon_t(polygon_t **polygon, int num_of_vertices) {
     *polygon = (polygon_t *) malloc(sizeof(polygon_t));
     assert(polygon != NULL);
-    (*polygon)->coordinate = (coordinate_t *) malloc(sizeof(coordinate_t) * num_of_vertices);
+    (*polygon)->coordinate =
+        (coordinate_t *) malloc(sizeof(coordinate_t) * num_of_vertices);
     assert((*polygon)->coordinate != NULL);
 }
 
@@ -29,10 +30,14 @@ void init_polygon_t(polygon_t *polygon, int num_of_vertices, int poly_id) {
 }
 
 void pushback_coordinate_polygon_t(polygon_t *polygon, double x, double y) {
+    /* push the polygon to the current position */
     (polygon->coordinate + polygon->current)->x = x;
     (polygon->coordinate + polygon->current)->y = y;
+
+    /* increment the position */
     ++(polygon->current);
 
+    /* if current y is less */
     polygon->min_y = y < polygon->min_y ? y : polygon->min_y;
 }
 
@@ -63,10 +68,13 @@ void calculate_perimeter(polygon_t *polygon) {
 }
 
 void calculate_eccentricity(polygon_t *polygon) {
-    polygon->eccentricity = pow(polygon->perimeter, 2) / polygon->area / 4 / M_PI;
+    polygon->eccentricity =
+        pow(polygon->perimeter, 2) / polygon->area / 4 / M_PI;
 }
 
-double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2, double y_offset) {
+double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2,
+    double y_offset) {
+
     double x_diff;
 
     x_diff = p2->x - p1->x;
@@ -82,5 +90,6 @@ double pair_coordinate_length(coordinate_t *p1, coordinate_t *p2) {
 
 coordinate_t *get_next_coordinate(polygon_t *polygon, int current_index) {
     assert(current_index < polygon->num_of_vertices);
-    return current_index == polygon->num_of_vertices - 1 ? polygon->coordinate : polygon->coordinate + current_index + 1;
+    return current_index == polygon->num_of_vertices - 1
+        ? polygon->coordinate : polygon->coordinate + current_index + 1;
 }
