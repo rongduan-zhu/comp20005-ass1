@@ -28,7 +28,9 @@ int read_all_polygon(polygon_t *polygons[]) {
     return num_of_polygons;
 }
 
-void stage_writer(polygon_t *polygons[], int num_of_polygons, int stage_number, void (*writer)(polygon_t *[], int)) {
+void stage_writer(polygon_t *polygons[], int num_of_polygons, int stage_number,
+    void (*writer)(polygon_t *[], int)) {
+
     write_header(stage_number);
     (*writer)(polygons, num_of_polygons);
 }

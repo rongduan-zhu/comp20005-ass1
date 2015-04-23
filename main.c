@@ -1,3 +1,5 @@
+/* Algorithms are super f**king awesomely stupidly amazingly fun */
+/* Algorithms are fun */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,9 +8,29 @@
 
 #define NUM_OF_HEADERS 5
 
+/* A wrapper function that calls the necessary functions to do the assignment
+*/
 void solver();
+
+/* Writes all of the necessary contents for stage 1 except for the header.
+
+    @param polygons          pointer to pointer of polygons
+    @param num_of_polygons   number of polygons read
+ */
 void stage1_write(polygon_t *polygons[], int num_of_polygons);
+
+/* Writes all of the necessary contents for stage 2 except for the header.
+
+    @param polygons          pointer to pointer of polygons
+    @param num_of_polygons   number of polygons read
+ */
 void stage2_write(polygon_t *polygons[], int num_of_polygons);
+
+/* Writes all of the necessary contents for stage 3 except for the header.
+
+    @param polygons          pointer to pointer of polygons
+    @param num_of_polygons   number of polygons read
+ */
 void stage3_write(polygon_t *polygons[], int num_of_polygons);
 
 int main(int argc, char *argv[]) {
@@ -32,7 +54,6 @@ void solver() {
     stage_writer(polygons, num_of_polygons, 3, stage3_write);
 }
 
-/* Stage 1 operations */
 void stage1_write(polygon_t *polygons[], int num_of_polygons) {
     int i;
     polygon_t *polygon = polygons[0];
@@ -50,7 +71,6 @@ void stage1_write(polygon_t *polygons[], int num_of_polygons) {
     printf("eccentricity = %5.2f\n", polygon->eccentricity);
 }
 
-/* Stage 2 operations */
 void stage2_write(polygon_t *polygons[], int num_of_polygons) {
     int i;
     char *headers[] = {"id", "nval", "perim", "area", "eccen"};
@@ -75,7 +95,6 @@ void stage2_write(polygon_t *polygons[], int num_of_polygons) {
     printf("+-------+-------+-------+-------+-------+\n");
 }
 
-/* Stage 3 operations */
 void stage3_write(polygon_t *polygons[], int num_of_polygons) {
     int i;
     polygon_t *largest;
