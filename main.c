@@ -1,4 +1,3 @@
-/* Algorithms are super f**king awesomely stupidly amazingly fun */
 /* Algorithms are fun */
 /*
     Author: Rongduan Zhu (584 169)

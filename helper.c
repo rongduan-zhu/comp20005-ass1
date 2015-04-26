@@ -16,6 +16,11 @@ int read_all_polygon(polygon_t *polygons[]) {
     double x, y;
     polygon_t *current_polygon;
 
+    /* The logic used is to read line by line. First read the number of
+       vertices x and the polygon id. Then loop for x times, each time
+       consuming two floats, and place them into a coordinate.
+       When it can't read two ints, it means it's finished reading all valid
+       polygons */
     while (scanf("%d %d", &num_of_vertices, &poly_id) == 2) {
         malloc_polygon_t(&current_polygon, num_of_vertices);
         init_polygon_t(current_polygon, num_of_vertices, poly_id);

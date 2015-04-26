@@ -9,8 +9,8 @@
 
 /* maximum number of polygon */
 #define MAX_POLYGONS 100
-/* not using math.h's M_PI as its not in all math.h's definition */
-#define M_PI 3.14159265358979323846
+/* the constant pi */
+#define PI 3.14159265358979323846
 
 /* Read all input from stdin and populate them into polygons
 

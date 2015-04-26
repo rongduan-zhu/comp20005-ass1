@@ -54,6 +54,7 @@ void calculate_area(polygon_t *polygon) {
         current = polygon->coordinate + i;
         next = get_next_coordinate(polygon, i);
 
+        /* need to negate the minimum y coordinate so it is positive. */
         polygon->area += pair_coordinate_area(current, next, -(polygon->min_y));
     }
 }
@@ -73,7 +74,7 @@ void calculate_perimeter(polygon_t *polygon) {
 
 void calculate_eccentricity(polygon_t *polygon) {
     polygon->eccentricity =
-        pow(polygon->perimeter, 2) / polygon->area / 4 / M_PI;
+        pow(polygon->perimeter, 2) / polygon->area / 4 / PI;
 }
 
 double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2,
@@ -82,6 +83,7 @@ double pair_coordinate_area(coordinate_t *p1, coordinate_t *p2,
     double x_diff;
 
     x_diff = p2->x - p1->x;
+    /* area formula: (top + bottom) * height / 2 */
     return (2 * y_offset + p1->y + p2->y) * x_diff / 2;
 }
 
